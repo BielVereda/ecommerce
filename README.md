@@ -36,7 +36,7 @@ Loja_Geek_Completa/
     └── pages/
 ```
 ---
-⚙️ Passo 1: Configurar o Banco de Dados
+## ⚙️ Passo 1: Configurar o Banco de Dados
 Abra seu MySQL Workbench (ou terminal) e execute o script abaixo para criar o banco e os dados iniciais:
 
 SQL
@@ -133,12 +133,12 @@ INSERT INTO produtos (nome, preco, estoque, categoria) VALUES
 -- ====================================================
 ```
 
-☕ Passo 2: Configurar e Rodar o Backend (Java)
+## ☕ Passo 2: Configurar e Rodar o Backend (Java)
 Abra a pasta backend no seu VS Code (ou IDE de preferência).
 
 Abra o arquivo: src/main/resources/application.properties.
 
-IMPORTANTE: Verifique se a senha do banco está correta:
+**IMPORTANTE: Verifique se a senha do banco está correta:**
 
 ```
 Properties
@@ -150,11 +150,11 @@ spring.jpa.hibernate.ddl-auto=update
 
 Execute o projeto!
 
-No VS Code: Procure a classe EcommerceApplication.java e clique em Run (ou Play).
+No Intellij: Procure a classe EcommerceApplication.java e clique em Run (ou Play).
 
 Aguarde aparecer no terminal: Started EcommerceApplication in ... seconds.
 
-🌐 Passo 3: Rodar o Frontend
+## 🌐 Passo 3: Rodar o Frontend
 Não precisa de servidor complexo.
 
 Vá até a pasta frontend.
@@ -163,7 +163,8 @@ Abra o arquivo login.html no seu navegador (Chrome, Edge, etc.).
 
 Dica: Se usar o VS Code, instale a extensão Live Server, clique com o botão direito no login.html e escolha "Open with Live Server".
 
-🔑 Como Usar (Logins)
+---
+## 🔑 Como Usar (Logins)
 O sistema possui dois níveis de acesso. Teste ambos!
 
 ```

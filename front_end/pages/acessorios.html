@@ -1,28 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acessórios</title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <title>Acessórios - Geek Store</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --header-bg: #2c3e50;
+            --card-bg: white;
+            --btn-bg: #e67e22;
+            --placeholder-bg: #ecf0f1;
+        }
+
+        body.dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --header-bg: #000;
+            --card-bg: #2d2d2d;
+            --btn-bg: #d35400;
+            --placeholder-bg: #404040;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            transition: 0.3s;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h2.page-title {
+            border-bottom: 2px solid var(--btn-bg);
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        #produtos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .produto-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .produto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            height: 150px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .produto-card button {
+            background-color: var(--btn-bg);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <h1><a href="./../index.html" style="color:white;text-decoration:none;">👾 Geek Store</a></h1>
+        <nav>
+            <a href="camisetas.html">Camisetas</a>
+            <a href="acessorios.html" style="color:#f39c12">Acessórios</a>
+            <a href="calcados.html">Calçados</a>
+            <a href="perfumes.html">Perfumes</a>
+            <a href="carrinho.html">Carrinho</a>
+        </nav>
+        <div class="header-controls">
+            <button id="theme-toggle">🌙</button>
+        </div>
+    </header>
 
-<header class="topo">
-    <a href="../index.html" class="voltar">⬅ Voltar</a>
+    <div class="container">
+        <h2 class="page-title">Acessórios</h2>
+        <div id="produtos-container"></div>
+    </div>
 
-    <h1>Acessórios</h1>
-    <p class="subtitulo">Detalhes que fazem diferença</p>
-
-    <button id="toggle-theme">🌗 Tema</button>
-</header>
-
-<div id="lista-produtos"></div>
-
-<script src="../scripts_for _pages/dados-acessorios.js"></script>
-<script src="../scripts/script.js"></script>
-<script src="../scripts/ui.js"></script>
-
+    <script src="./../js/theme.js"></script>
+    <script src="./../js/global.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            carregarProdutosPorCategoria('ACESSORIO');
+        });
+    </script>
 </body>
+
 </html>

@@ -1,30 +1,169 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Principal</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <title>Loja Geek - Home</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --header-bg: #2c3e50;
+            --card-bg: white;
+            --btn-bg: #e67e22;
+        }
+
+        body.dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --header-bg: #000;
+            --card-bg: #2d2d2d;
+            --btn-bg: #d35400;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            transition: 0.3s;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--btn-bg);
+        }
+
+        .categorias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cat-card {
+            background: var(--card-bg);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--btn-bg);
+            color: white;
+        }
+
+        .cat-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <header class="topo">
-        <h1>🎮 Loja Geek</h1>
-        <div>
-            <span id="user-display" style="margin-right: 15px;"></span>
-            <a href="admin.html" id="btn-admin" style="display:none; background: #e67e22; padding: 8px 15px; border-radius: 5px;">⚙️ Gerenciar Estoque</a>
-            <button onclick="logout()" style="margin-left: 10px;">Sair</button>
+    <header>
+        <h1>👾 Geek Store</h1>
+        <nav>
+            <a href="./pages/camisetas.html">Camisetas</a>
+            <a href="./pages/acessorios.html">Acessórios</a>
+            <a href="./pages/calcados.html">Calçados</a>
+            <a href="./pages/perfumes.html">Perfumes</a>
+        </nav>
+        <div class="header-controls">
+            <button id="theme-toggle">🌙</button>
+            <a href="./pages/carrinho.html" style="text-decoration: none; font-weight: bold; color: white;">🛒
+                Carrinho</a>
+            <a href="login.html" id="link-login"
+                style="background-color: #e67e22; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-left: 15px; display: inline-block;">
+                👤 Login
+            </a>
         </div>
     </header>
 
-    <div style="text-align: center; margin-top: 50px;">
-        <h2>Selecione uma Categoria</h2>
-        <div class="menu-categorias">
-            <a href="pages/camisetas.html"><button>👕 Camisetas</button></a>
-            <a href="pages/acessorios.html"><button>🧢 Acessórios</button></a>
-            <a href="pages/calcados.html"><button>👟 Calçados</button></a>
-            <a href="pages/perfumes.html"><button>🧴 Perfumes</button></a>
-        </div>
+    <div class="hero">
+        <h2>Bem-vindo ao Universo Geek!</h2>
+        <p>Escolha uma categoria para começar a explorar.</p>
     </div>
-    <script src="scripts/script.js"></script>
+
+    <div class="categorias-grid">
+        <a href="./pages/camisetas.html" class="cat-card">
+            <span class="cat-icon">👕</span>
+            <h3>Camisetas</h3>
+        </a>
+        <a href="./pages/acessorios.html" class="cat-card">
+            <span class="cat-icon">🧢</span>
+            <h3>Acessórios</h3>
+        </a>
+        <a href="./pages/calcados.html" class="cat-card">
+            <span class="cat-icon">👟</span>
+            <h3>Calçados</h3>
+        </a>
+        <a href="./pages/perfumes.html" class="cat-card">
+            <span class="cat-icon">🧴</span>
+            <h3>Perfumes</h3>
+        </a>
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/global.js"></script>
 </body>
+
 </html>

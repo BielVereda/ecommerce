@@ -1,43 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Carrinho</title>
-    <link rel="stylesheet" href="../styles/style.css">
+    <title>Meu Carrinho - Geek Store</title>
+    <style>
+        /* Reutilizando o estilo do tema */
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --header-bg: #2c3e50;
+            --card-bg: white;
+            --btn-bg: #e67e22;
+        }
+
+        body.dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --header-bg: #000;
+            --card-bg: #2d2d2d;
+            --btn-bg: #d35400;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .btn-voltar {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--btn-bg);
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #eee;
+            color: #333;
+        }
+
+        .total-area {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--btn-bg);
+        }
+
+        .btn-finalizar {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-finalizar:hover {
+            background-color: #219150;
+        }
+
+        .btn-remove {
+            color: #c0392b;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            background: none;
+        }
+    </style>
 </head>
+
 <body>
-    <header class="topo">
-        <a href="../index.html">⬅ Continuar Comprando</a>
-        <h1>🛒 Carrinho de Compras</h1>
-        <button onclick="logout()">Sair</button>
+
+    <header>
+        <a href="./../index.html" class="btn-voltar">← Continuar Comprando</a>
+        <h1>🛒 Seu Carrinho</h1>
+        <button id="theme-toggle" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">🌙</button>
     </header>
 
-    <div class="admin-section" style="margin-top: 50px;">
-        <table>
+    <div class="container">
+        <h2>Itens Selecionados</h2>
+
+        <table id="tabela-carrinho">
             <thead>
                 <tr>
                     <th>Produto</th>
-                    <th>Preço Un.</th>
                     <th>Qtd</th>
+                    <th>Preço Un.</th>
                     <th>Subtotal</th>
-                    <th>Remover</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
-            <tbody id="lista-carrinho">
-                </tbody>
+            <tbody>
+            </tbody>
         </table>
 
-        <div style="text-align: right; margin-top: 20px;">
-            <h2>Total: R$ <span id="total-valor">0.00</span></h2>
-            <a href="pagamento.html">
-                <button style="background: green; color: white; padding: 15px 30px; font-size: 1.2em; border: none; border-radius: 5px; cursor: pointer;">
-                    Finalizar Compra ➡
-                </button>
-            </a>
+        <div class="total-area">
+            Total: R$ <span id="valor-total">0.00</span>
         </div>
+
+        <button class="btn-finalizar" onclick="finalizarCompra()">✅ Finalizar Compra</button>
     </div>
 
-    <script src="../scripts/script.js"></script>
+    <script src="./../js/theme.js"></script>
+    <script src="./../js/carrinho.js"></script>
+    <script src="./../js/global.js"></script>
 </body>
+
 </html>

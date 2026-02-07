@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta - Loja Geek</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #2c3e50; }
+        .box { background: white; padding: 40px; border-radius: 10px; text-align: center; width: 300px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #27ae60; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background: #2ecc71; }
+        a { display: block; margin-top: 15px; color: #7f8c8d; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>🚀 Nova Conta</h2>
+        <input type="text" id="nome" placeholder="Nome Completo">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="senha" placeholder="Senha">
+        
+        <button onclick="cadastrar()">CADASTRAR</button>
+        <a href="./../login.html">Voltar para Login</a>
+    </div>
+
+    <script>
+        function cadastrar() {
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            if(!nome || !email || !senha) {
+                alert("Por favor, preencha todos os campos!");
+                return;
+            }
+
+            const dados = { nome: nome, email: email, senha: senha };
+
+            fetch("http://localhost:8080/auth/cadastrar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dados)
+            })
+            .then(async response => {
+                if(response.ok) {
+                    return response.json();
+                } else {
+                    // Pega a mensagem de erro do Java (ex: Email já existe)
+                    const erroTexto = await response.text(); 
+                    throw new Error(erroTexto || "Erro ao conectar no servidor");
+                }
+            })
+            .then(usuarioSalvo => {
+                alert("✅ Conta criada com SUCESSO! \nBem-vindo(a), " + usuarioSalvo.nome + ".\nAgora faça o login.");
+                window.location.href = "login.html";
+            })
+            .catch(erro => {
+                console.error(erro);
+                alert("❌ Erro ao cadastrar: " + erro.message);
+            });
+        }
+    </script>
+</body>
+</html>

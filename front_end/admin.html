@@ -4,105 +4,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administração</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <title>Painel Administrativo</title>
+    <style>
+        /* CSS DO SEU PRINT BONITO */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-voltar {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-sair {
+            color: #e74c3c;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        /* Formulário */
+        .card-novo {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        input,
+        select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            flex: 1;
+        }
+
+        button.btn-add {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Tabelas */
+        .categoria-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .categoria-header {
+            padding: 15px 25px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            text-align: left;
+            padding: 15px;
+            color: #555;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn-delete {
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="topo">
-        <a href="./index.html">⬅ Voltar para Loja</a>
+
+    <header>
         <h1>⚙️ Painel Administrativo</h1>
-        <button onclick="logout()">Sair</button>
+        <a onclick="logout()" class="btn-sair">Sair</a>
     </header>
 
-    <div id="painel-admin">
-        <div class="admin-section">
-            <div class="admin-header">
-                <h3>Novo Produto</h3>
-            </div>
-            <form class="form-add" onsubmit="adicionarProduto(event)">
-                <input type="text" id="nome" placeholder="Nome do Produto" required>
-                <input type="number" id="preco" placeholder="Preço" step="0.01" required>
-                <input type="number" id="estoque" placeholder="Qtd" required>
-                <select id="cat" aria-label="Categoria">
-                    <option value="camisetas">Camisetas</option>
-                    <option value="acessorios">Acessórios</option>
-                    <option value="calcados">Calçados</option>
-                    <option value="perfumes">Perfumes</option>
+    <div class="container">
+
+        <div class="card-novo">
+            <h2>Novo Produto</h2>
+            <div class="form-row">
+                <input type="text" id="nome" placeholder="Nome do Produto">
+                <input type="number" id="preco" placeholder="Preço" step="0.01">
+                <input type="number" id="qtd" placeholder="Qtd">
+
+                <select id="categoria" aria-label="Categoria">
+                    <option value="CAMISETA">Camisetas</option>
+                    <option value="ACESSORIO">Acessórios</option>
+                    <option value="CALCADO">Calçados</option>
+                    <option value="PERFUME">Perfumes</option>
                 </select>
-                <button type="submit" style="background:#27ae60; color:white; border:none; padding:10px; cursor:pointer;">+ Adicionar</button>
-            </form>
+
+                <button class="btn-add" onclick="cadastrarProduto()">+ Adicionar</button>
+            </div>
         </div>
 
-        <div class="admin-section">
-            <div class="admin-header">
-                <h3>👕 Camisetas</h3>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="tb-camisetas"></tbody>
-            </table>
+        <div id="listas-produtos">
+            <p style="text-align:center;">Carregando...</p>
         </div>
 
-        <div class="admin-section">
-            <div class="admin-header">
-                <h3>🧢 Acessórios</h3>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="tb-acessorios"></tbody>
-            </table>
-        </div>
-
-        <div class="admin-section">
-            <div class="admin-header">
-                <h3>👟 Calçados</h3>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="tb-calcados"></tbody>
-            </table>
-        </div>
-
-        <div class="admin-section">
-            <div class="admin-header">
-                <h3>🧴 Perfumes</h3>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="tb-perfumes"></tbody>
-            </table>
-        </div>
     </div>
-    <script src="./scripts/script.js"></script>
+
+    <script>
+        // LOGIN CHECK
+        const usuarioLogado = localStorage.getItem("usuarioLogado");
+        if (!usuarioLogado) {
+            window.location.href = "login.html";
+        }
+        function logout() {
+            localStorage.removeItem("usuarioLogado");
+            window.location.href = "login.html";
+        }
+
+        const API_URL = "http://localhost:8080/produtos";
+
+        // CARREGAR
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch(API_URL)
+                .then(res => res.json())
+                .then(produtos => renderizarTabelas(produtos))
+                .catch(err => console.error(err));
+        });
+
+        function renderizarTabelas(produtos) {
+            const container = document.getElementById("listas-produtos");
+            container.innerHTML = "";
+
+            const categorias = {
+                'CAMISETA': '👕 Camisetas',
+                'ACESSORIO': '🧢 Acessórios',
+                'CALCADO': '👟 Calçados',
+                'PERFUME': '🧴 Perfumes'
+            };
+
+            for (const [key, titulo] of Object.entries(categorias)) {
+                const lista = produtos.filter(p => p.categoria === key);
+                if (lista.length > 0) {
+                    let linhas = "";
+                    lista.forEach(p => {
+                        linhas += `
+                            <tr>
+                                <td>${p.id}</td>
+                                <td>${p.nome}</td>
+                                <td>R$ ${p.preco.toFixed(2)}</td>
+                                <td>${p.quantidade}</td>
+                                <td><button class="btn-delete" onclick="deletar(${p.id})">Excluir</button></td>
+                            </tr>`;
+                    });
+
+                    container.innerHTML += `
+                        <div class="categoria-section">
+                            <div class="categoria-header"><h3>${titulo}</h3></div>
+                            <table>
+                                <thead><tr><th>ID</th><th>Nome</th><th>Preço</th><th>Estoque</th><th>Ação</th></tr></thead>
+                                <tbody>${linhas}</tbody>
+                            </table>
+                        </div>`;
+                }
+            }
+        }
+
+        // CADASTRAR (SEM IMAGEM)
+        function cadastrarProduto() {
+            const produto = {
+                nome: document.getElementById("nome").value,
+                preco: parseFloat(document.getElementById("preco").value),
+                quantidade: parseInt(document.getElementById("qtd").value),
+                categoria: document.getElementById("categoria").value,
+                imagemUrl: "" // Enviamos vazio já que não tem imagem
+            };
+
+            fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(produto)
+            }).then(() => {
+                alert("Produto cadastrado!");
+                location.reload();
+            });
+        }
+
+        function deletar(id) {
+            if (confirm("Excluir item?")) {
+                fetch(`${API_URL}/${id}`, { method: "DELETE" }).then(() => location.reload());
+            }
+        }
+    </script>
 </body>
 
 </html>

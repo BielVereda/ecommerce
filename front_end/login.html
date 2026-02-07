@@ -1,23 +1,172 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Loja Geek</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        :root {
+            --bg-color: #2c3e50;
+            --card-bg: white;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--bg-color);
+            margin: 0;
+        }
+
+        .login-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 320px;
+        }
+
+        .login-box h2 {
+            margin-top: 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #d35400;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 15px;
+            display: none;
+            background: #fadbd8;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        /* --- NOVO ESTILO PARA O LINK DE CADASTRO --- */
+        .register-link {
+            margin-top: 25px;
+            /* Espaço do botão */
+            font-size: 1rem;
+            color: #333;
+            /* Texto escuro para leitura fácil */
+        }
+
+        .register-link a {
+            color: #d35400;
+            /* Laranja escuro forte */
+            font-weight: 800;
+            /* Negrito extra */
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 30px;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
-    <div class="login-container">
-        <div class="login-box">
-            <h2>🔐 Acesso Restrito</h2>
-            <p>Faça login para acessar a loja</p>
-            <form id="form-login" onsubmit="fazerLogin(event)">
-                <input type="text" id="user" placeholder="Usuário (admin ou cliente)" required>
-                <input type="password" id="pass" placeholder="Senha (123)" required>
-                <button type="submit">ENTRAR</button>
-            </form>
+
+    <div class="login-box">
+        <h2>🔐 Acesso</h2>
+        <input type="email" id="email" placeholder="E-Mail">
+        <input type="password" id="senha" placeholder="Senha">
+
+        <button onclick="fazerLogin()">ENTRAR</button>
+
+        <p id="mensagem-erro" class="error"></p>
+
+        <div class="register-link">
+            Novo por aqui? <a href="pages/cadastro.html">CRIE SUA CONTA</a>
         </div>
+
+        <a href="index.html" class="back-link">← Voltar para a Loja</a>
     </div>
-    <script src="scripts/script.js"></script>
+
+    <script>
+        function fazerLogin() {
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const msgErro = document.getElementById('mensagem-erro');
+
+            msgErro.style.display = 'none';
+
+            const dados = { email: email, senha: senha };
+
+            fetch("http://localhost:8080/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dados)
+            })
+                .then(response => {
+                    if (response.ok) return response.json();
+                    else throw new Error("Email ou senha incorretos");
+                })
+                .then(usuario => {
+                    localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
+
+                    if (usuario.tipo === "ADMIN") {
+                        window.location.href = "admin.html";
+                    } else {
+                        // Manda para a home
+                        window.location.href = "index.html";
+                    }
+                })
+                .catch(erro => {
+                    msgErro.innerText = erro.message;
+                    msgErro.style.display = 'block';
+                });
+        }
+    </script>
 </body>
+
 </html>

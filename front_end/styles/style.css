@@ -1,193 +1,424 @@
+/* =======================================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+   ======================================================= */
+* {
+    box-sizing: border-box; /* Garante que padding não estoure larguras */
+}
+
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
-  margin: 0;
-  padding: 0;
-}
-.topo {
-  background-color: #2c3e50;
-  color: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-.topo a,
-.topo button {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-size: 1em;
-}
-.topo h1 {
-  margin: 0;
-  font-size: 1.5em;
+    font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5; /* Cinza bem clarinho (moderno) */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    
+    /* ANIMAÇÃO DE ENTRADA SUAVE (FADE IN) */
+    animation: fadeIn 0.6s ease-out;
 }
 
-/* Menu Categorias */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Vem um pouco de baixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+/* =======================================================
+   2. CABEÇALHO (HEADER)
+   ======================================================= */
+header, .topo {
+    height: 80px;                 
+    background-color: #2c3e50; /* Azul Escuro Geek */   
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;              
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+    /* FIXAR NO TOPO */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Garante que fique acima de tudo */
+}
+
+header h1, .topo h1, .logo span {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ecf0f1;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Navegação */
+header nav ul, .topo nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+header a, .topo a {
+    color: #bdc3c7;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+header a:hover, .topo a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255,255,255,0.4);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* =======================================================
+   3. MENU DE CATEGORIAS (HOME)
+   ======================================================= */
 .menu-categorias {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    flex-wrap: wrap; 
 }
+
 .menu-categorias button {
-  padding: 15px 30px;
-  font-size: 1.2em;
-  border: none;
-  border-radius: 8px;
-  background-color: #3498db;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px; /* Estilo pílula */
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+
 .menu-categorias button:hover {
-  background-color: #2980b9;
-  transform: translateY(-3px);
+    background-color: #2980b9;
+    transform: translateY(-3px); /* Sobe um pouquinho */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
-/* Grid de Produtos */
-#lista-produtos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+/* =======================================================
+   4. GRID DE PRODUTOS
+   ======================================================= */
+#produtos-container, #lista-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto; 
 }
+
 .produto-card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  width: 220px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o botão pro final */
+    border: 1px solid #eee;
 }
+
 .produto-card:hover {
-  transform: scale(1.02);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: #3498db;
 }
+
+.img-placeholder {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #bdc3c7;
+}
+
 .produto-card h3 {
-  font-size: 1.1em;
-  color: #333;
-  height: 50px;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 10px 0;
+    min-height: 50px; /* Altura fixa pro título alinhar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .preco {
-  color: #27ae60;
-  font-weight: bold;
-  font-size: 1.3em;
-  margin: 10px 0;
-}
-.btn-comprar {
-  background-color: #27ae60;
-  color: white;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+    color: #27ae60;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin: 5px 0;
 }
 
-/* Login Box */
+.estoque {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+/* Inputs de quantidade dentro do card */
+.produto-card input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Botão de Comprar */
+.produto-card button, .btn-comprar {
+    background-color: #27ae60;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.produto-card button:hover:not(:disabled) {
+    background-color: #219150;
+    transform: scale(1.02);
+}
+
+.produto-card button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* =======================================================
+   5. PÁGINA DE LOGIN
+   ======================================================= */
 .login-container {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #34495e;
-}
-.login-box {
-  background: white;
-  padding: 40px;
-  border-radius: 10px;
-  width: 350px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-.login-box input {
-  width: 90%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-.login-box button {
-  width: 100%;
-  padding: 12px;
-  background-color: #e67e22;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
+    min-height: calc(100vh - 80px); /* Ocupa a tela toda menos header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #34495e;
+    padding: 20px;
 }
 
-/* Admin */
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.login-box h2 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid #dfe6e9;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f8f9fa;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #e67e22; /* Laranja destaque */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.login-box button:hover {
+    background-color: #d35400;
+}
+
+/* =======================================================
+   6. ADMINISTRAÇÃO (TABELAS)
+   ======================================================= */
 .admin-section {
-  background: white;
-  margin: 20px auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 1000px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: white;
+    margin: 40px auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 1100px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
+
 .admin-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #f1f2f6;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
 }
+
+/* Container da Tabela (para scroll no mobile) */
+.table-responsive {
+    overflow-x: auto;
+}
+
 table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    min-width: 600px; /* Força scroll se ficar muito pequeno */
 }
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
+
+th, td {
+    border: 1px solid #dfe6e9;
+    padding: 15px;
+    text-align: center;
 }
+
 th {
-  background-color: #f8f9fa;
-  color: #333;
+    background-color: #34495e;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
 .btn-del {
-  background-color: #c0392b;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
 }
+
+.btn-del:hover {
+    background-color: #c0392b;
+}
+
+/* Form Add Produto */
 .form-add {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+    gap: 15px;
+    align-items: center;
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
 }
-.form-add input,
-.form-add select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
+.form-add input, .form-add select {
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    width: 100%;
 }
+
 .form-add button {
-  background: #27ae60;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
 }
-.form-add button:hover {
-  background: #219150; /* Efeito ao passar o mouse */
+
+/* =======================================================
+   7. RESPONSIVIDADE (MOBILE & TABLET)
+   ======================================================= */
+@media (max-width: 768px) {
+    
+    /* Header vira coluna no celular */
+    header, .topo {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        position: relative; /* Remove sticky se a tela for muito pequena */
+    }
+
+    header nav ul, .topo nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header-controls {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    /* Cards ocupam largura total */
+    .produto-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    /* Formulário Admin Empilhado */
+    .form-add {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .form-add button {
+        margin-top: 10px;
+        padding: 15px;
+    }
+
+    /* Tabela com barra de rolagem */
+    .admin-section {
+        padding: 15px;
+        width: 95%;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }

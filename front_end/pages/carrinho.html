@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Carrinho</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header class="topo">
+        <a href="../index.html">⬅ Continuar Comprando</a>
+        <h1>🛒 Carrinho de Compras</h1>
+        <button onclick="logout()">Sair</button>
+    </header>
+
+    <div class="admin-section" style="margin-top: 50px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço Un.</th>
+                    <th>Qtd</th>
+                    <th>Subtotal</th>
+                    <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody id="lista-carrinho">
+                </tbody>
+        </table>
+
+        <div style="text-align: right; margin-top: 20px;">
+            <h2>Total: R$ <span id="total-valor">0.00</span></h2>
+            <a href="pagamento.html">
+                <button style="background: green; color: white; padding: 15px 30px; font-size: 1.2em; border: none; border-radius: 5px; cursor: pointer;">
+                    Finalizar Compra ➡
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <script src="../scripts/script.js"></script>
+</body>
+</html>

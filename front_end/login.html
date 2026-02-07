@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Loja Geek</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>🔐 Acesso Restrito</h2>
+            <p>Faça login para acessar a loja</p>
+            <form id="form-login" onsubmit="fazerLogin(event)">
+                <input type="text" id="user" placeholder="Usuário (admin ou cliente)" required>
+                <input type="password" id="pass" placeholder="Senha (123)" required>
+                <button type="submit">ENTRAR</button>
+            </form>
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

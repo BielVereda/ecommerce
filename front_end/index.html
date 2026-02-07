@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="topo">
+        <h1>🎮 Loja Geek</h1>
+        <div>
+            <span id="user-display" style="margin-right: 15px;"></span>
+            <a href="admin.html" id="btn-admin" style="display:none; background: #e67e22; padding: 8px 15px; border-radius: 5px;">⚙️ Gerenciar Estoque</a>
+            <button onclick="logout()" style="margin-left: 10px;">Sair</button>
+        </div>
+    </header>
+
+    <div style="text-align: center; margin-top: 50px;">
+        <h2>Selecione uma Categoria</h2>
+        <div class="menu-categorias">
+            <a href="pages/camisetas.html"><button>👕 Camisetas</button></a>
+            <a href="pages/acessorios.html"><button>🧢 Acessórios</button></a>
+            <a href="pages/calcados.html"><button>👟 Calçados</button></a>
+            <a href="pages/perfumes.html"><button>🧴 Perfumes</button></a>
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

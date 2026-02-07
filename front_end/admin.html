@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <header class="topo">
+        <a href="./index.html">⬅ Voltar para Loja</a>
+        <h1>⚙️ Painel Administrativo</h1>
+        <button onclick="logout()">Sair</button>
+    </header>
+
+    <div id="painel-admin">
+        <div class="admin-section">
+            <div class="admin-header">
+                <h3>Novo Produto</h3>
+            </div>
+            <form class="form-add" onsubmit="adicionarProduto(event)">
+                <input type="text" id="nome" placeholder="Nome do Produto" required>
+                <input type="number" id="preco" placeholder="Preço" step="0.01" required>
+                <input type="number" id="estoque" placeholder="Qtd" required>
+                <select id="cat" aria-label="Categoria">
+                    <option value="camisetas">Camisetas</option>
+                    <option value="acessorios">Acessórios</option>
+                    <option value="calcados">Calçados</option>
+                    <option value="perfumes">Perfumes</option>
+                </select>
+                <button type="submit" style="background:#27ae60; color:white; border:none; padding:10px; cursor:pointer;">+ Adicionar</button>
+            </form>
+        </div>
+
+        <div class="admin-section">
+            <div class="admin-header">
+                <h3>👕 Camisetas</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="tb-camisetas"></tbody>
+            </table>
+        </div>
+
+        <div class="admin-section">
+            <div class="admin-header">
+                <h3>🧢 Acessórios</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="tb-acessorios"></tbody>
+            </table>
+        </div>
+
+        <div class="admin-section">
+            <div class="admin-header">
+                <h3>👟 Calçados</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="tb-calcados"></tbody>
+            </table>
+        </div>
+
+        <div class="admin-section">
+            <div class="admin-header">
+                <h3>🧴 Perfumes</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="tb-perfumes"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>

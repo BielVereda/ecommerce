@@ -126,10 +126,10 @@
         <p id="mensagem-erro" class="error"></p>
 
         <div class="register-link">
-            Novo por aqui? <a href="pages/cadastro.html">CRIE SUA CONTA</a>
+            Novo por aqui? <a href="./pages/cadastro.html">CRIE SUA CONTA</a>
         </div>
 
-        <a href="index.html" class="back-link">← Voltar para a Loja</a>
+        <a href="./index.html" class="back-link">← Voltar para a Loja</a>
     </div>
 
     <script>
@@ -155,10 +155,10 @@
                     localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
 
                     if (usuario.tipo === "ADMIN") {
-                        window.location.href = "admin.html";
+                        window.location.href = "./admin.html";
                     } else {
                         // Manda para a home
-                        window.location.href = "index.html";
+                        window.location.href = "./index.html";
                     }
                 })
                 .catch(erro => {

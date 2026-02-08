@@ -137,7 +137,7 @@ function adicionarAoCarrinho(id, nome, preco) {
     if (!localStorage.getItem("usuarioLogado")) {
         alert("🔒 Faça login para comprar!");
         const isPages = window.location.pathname.includes("pages");
-        window.location.href = isPages ? "../login.html" : "login.html";
+        window.location.href = isPages ? "../login.html" : "../login.html";
         return;
     }
 

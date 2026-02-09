@@ -190,7 +190,7 @@ Abra o arquivo: src/main/resources/application.properties.
 Properties
 spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce
 spring.datasource.username=root
-spring.datasource.password=SUA_SENHA_DO_MYSQL_AQUI
+spring.datasource.password=root
 spring.jpa.hibernate.ddl-auto=update
 ```
 

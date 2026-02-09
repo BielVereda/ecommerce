@@ -53,7 +53,7 @@ async function finalizarCompra() {
 
   if (!usuarioLogado) {
     alert("🔒 Você precisa estar logado para fechar o pedido!");
-    window.location.href = "login.html";
+    window.location.href = "./../login.html";
     return;
   }
   // --------------------------------

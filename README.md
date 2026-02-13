@@ -67,7 +67,7 @@ CREATE TABLE usuarios (
 
 -- Cria o Usuário ADMIN Padrão
 -- Login: E-mail: admin@geek.com | Senha: 123
-INSERT INTO usuario (nome, email, senha, tipo) VALUES
+INSERT INTO usuarios (nome, email, senha, tipo) VALUES
 ('Administrador', 'admin@geek.com', '123', 'ADMIN');
 
 -- =======================================================
@@ -86,7 +86,7 @@ CREATE TABLE produtos (
 -- =======================================================
 
 -- --- A. 20 CAMISETAS ---
-INSERT INTO produto (nome, preco, quantidade, categoria) VALUES
+INSERT INTO produtos (nome, preco, quantidade, categoria) VALUES
 ('Camiseta Star Wars Classic', 59.90, 15,'camisetas'),
 ('Camiseta Marvel Heroes', 49.90, 20, 'camisetas'),
 ('Camiseta DC Batman', 49.90, 18, 'camisetas'),

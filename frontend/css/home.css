@@ -1,0 +1,57 @@
+:root {
+  --bg-color: #f4f7f6;
+  --text-color: #333;
+  --header-bg: #2c3e50;
+  --card-bg: white;
+  --btn-bg: #e67e22;
+}
+
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --header-bg: #000;
+  --card-bg: #2d2d2d;
+  --btn-bg: #d35400;
+}
+
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: var(--btn-bg);
+}
+
+.categorias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cat-card {
+  background: var(--card-bg);
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.cat-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+.cat-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}

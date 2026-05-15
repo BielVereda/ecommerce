@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Camisetas - Geek Store</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/t-shirts.css">
+</head>
+
+<body>
+    <header>
+        <h1><a href="../index.html" style="color:white;text-decoration:none;">👾 Geek Store</a></h1>
+        <nav>
+            <a href="t-shirts.html" style="color:#f39c12">Camisetas</a>
+            <a href="accessories.html">Acessórios</a>
+            <a href="shoes.html">Calçados</a>
+            <a href="perfumes.html">Perfumes</a>
+            <a href="cart.html">Carrinho</a>
+        </nav>
+        <div class="header-controls">
+            <button id="theme-toggle">🌙</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="page-title">Camisetas Geek</h2>
+        <div id="produtos-container"></div>
+    </div>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/global.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            carregarProdutosPorCategoria('CAMISETA');
+        });
+    </script>
+</body>
+
+</html>

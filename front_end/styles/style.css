@@ -2,16 +2,16 @@
    1. RESET E CONFIGURAÇÕES GERAIS
    ======================================================= */
 * {
-    box-sizing: border-box; /* Garante que padding não estoure larguras */
+    box-sizing: border-box;
 }
 
 body {
     font-family: "Segoe UI", "Roboto", Helvetica, Arial, sans-serif;
-    background-color: #f0f2f5; /* Cinza bem clarinho (moderno) */
+    background-color: #f0f2f5;
     margin: 0;
     padding: 0;
     color: #333;
-    
+
     /* ANIMAÇÃO DE ENTRADA SUAVE (FADE IN) */
     animation: fadeIn 0.6s ease-out;
 }
@@ -19,8 +19,9 @@ body {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px); /* Vem um pouco de baixo */
+        transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -31,26 +32,26 @@ a {
     text-decoration: none;
 }
 
-/* =======================================================
-   2. CABEÇALHO (HEADER)
-   ======================================================= */
-header, .topo {
-    height: 80px;                 
-    background-color: #2c3e50; /* Azul Escuro Geek */   
+/* === 2. CABEÇALHO (HEADER) === */
+header,
+.topo {
+    height: 80px;
+    background-color: #2c3e50;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;              
+    padding: 0 5%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    
-    /* FIXAR NO TOPO */
+
     position: sticky;
     top: 0;
-    z-index: 1000; /* Garante que fique acima de tudo */
+    z-index: 1000;
 }
 
-header h1, .topo h1, .logo span {
+header h1,
+.topo h1,
+.logo span {
     font-size: 1.6rem;
     font-weight: 700;
     margin: 0;
@@ -62,7 +63,8 @@ header h1, .topo h1, .logo span {
 }
 
 /* Navegação */
-header nav ul, .topo nav ul {
+header nav ul,
+.topo nav ul {
     list-style: none;
     display: flex;
     gap: 25px;
@@ -70,16 +72,18 @@ header nav ul, .topo nav ul {
     padding: 0;
 }
 
-header a, .topo a {
+header a,
+.topo a {
     color: #bdc3c7;
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.3s, text-shadow 0.3s;
 }
 
-header a:hover, .topo a:hover {
+header a:hover,
+.topo a:hover {
     color: #fff;
-    text-shadow: 0 0 8px rgba(255,255,255,0.4);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
 .header-controls {
@@ -88,47 +92,44 @@ header a:hover, .topo a:hover {
     gap: 20px;
 }
 
-/* =======================================================
-   3. MENU DE CATEGORIAS (HOME)
-   ======================================================= */
+/* === 3. MENU DE CATEGORIAS (HOME) === */
 .menu-categorias {
     display: flex;
     justify-content: center;
     gap: 20px;
     padding: 40px 20px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 .menu-categorias button {
     padding: 12px 25px;
     font-size: 1rem;
     border: none;
-    border-radius: 50px; /* Estilo pílula */
+    border-radius: 50px;
     background-color: #3498db;
     color: white;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .menu-categorias button:hover {
     background-color: #2980b9;
-    transform: translateY(-3px); /* Sobe um pouquinho */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* =======================================================
-   4. GRID DE PRODUTOS
-   ======================================================= */
-#produtos-container, #lista-produtos {
+/* === 4. GRID DE PRODUTOS === */
+#produtos-container,
+#lista-produtos {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
     padding: 30px 20px;
     max-width: 1200px;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .produto-card {
@@ -141,7 +142,7 @@ header a:hover, .topo a:hover {
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empurra o botão pro final */
+    justify-content: space-between;
     border: 1px solid #eee;
 }
 
@@ -161,7 +162,7 @@ header a:hover, .topo a:hover {
     font-size: 1.1rem;
     color: #2c3e50;
     margin: 10px 0;
-    min-height: 50px; /* Altura fixa pro título alinhar */
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,7 +191,8 @@ header a:hover, .topo a:hover {
 }
 
 /* Botão de Comprar */
-.produto-card button, .btn-comprar {
+.produto-card button,
+.btn-comprar {
     background-color: #27ae60;
     color: white;
     padding: 12px;
@@ -214,11 +216,9 @@ header a:hover, .topo a:hover {
     opacity: 0.7;
 }
 
-/* =======================================================
-   5. PÁGINA DE LOGIN
-   ======================================================= */
+/* === 5. PÁGINA DE LOGIN === */
 .login-container {
-    min-height: calc(100vh - 80px); /* Ocupa a tela toda menos header */
+    min-height: calc(100vh - 80px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -254,7 +254,7 @@ header a:hover, .topo a:hover {
 .login-box button {
     width: 100%;
     padding: 12px;
-    background-color: #e67e22; /* Laranja destaque */
+    background-color: #e67e22;
     color: white;
     border: none;
     border-radius: 6px;
@@ -269,9 +269,7 @@ header a:hover, .topo a:hover {
     background-color: #d35400;
 }
 
-/* =======================================================
-   6. ADMINISTRAÇÃO (TABELAS)
-   ======================================================= */
+/* === 6. ADMINISTRAÇÃO (TABELAS) ==== */
 .admin-section {
     background: white;
     margin: 40px auto;
@@ -300,10 +298,11 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    min-width: 600px; /* Força scroll se ficar muito pequeno */
+    min-width: 600px;
 }
 
-th, td {
+th,
+td {
     border: 1px solid #dfe6e9;
     padding: 15px;
     text-align: center;
@@ -348,7 +347,8 @@ tr:nth-child(even) {
     margin-bottom: 30px;
 }
 
-.form-add input, .form-add select {
+.form-add input,
+.form-add select {
     padding: 12px;
     border: 1px solid #bdc3c7;
     border-radius: 5px;
@@ -367,21 +367,21 @@ tr:nth-child(even) {
     width: 100%;
 }
 
-/* =======================================================
-   7. RESPONSIVIDADE (MOBILE & TABLET)
-   ======================================================= */
+/* === 7. RESPONSIVIDADE (MOBILE & TABLET) ==== */
 @media (max-width: 768px) {
-    
+
     /* Header vira coluna no celular */
-    header, .topo {
+    header,
+    .topo {
         height: auto;
         padding: 20px;
         flex-direction: column;
         gap: 15px;
-        position: relative; /* Remove sticky se a tela for muito pequena */
+        position: relative;
     }
 
-    header nav ul, .topo nav ul {
+    header nav ul,
+    .topo nav ul {
         gap: 15px;
         flex-wrap: wrap;
         justify-content: center;
@@ -415,7 +415,7 @@ tr:nth-child(even) {
         padding: 15px;
         width: 95%;
     }
-    
+
     table {
         display: block;
         overflow-x: auto;
